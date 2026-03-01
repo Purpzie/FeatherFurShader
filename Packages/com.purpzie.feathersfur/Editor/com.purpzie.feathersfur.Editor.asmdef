@@ -1,0 +1,14 @@
+{
+  "name": "com.purpzie.feathersfur.Editor",
+  "references": [
+    "com.purpzie.feathersfur"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "autoReferenced": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "defineConstraints": [],
+  "optionalUnityReferences": []
+}

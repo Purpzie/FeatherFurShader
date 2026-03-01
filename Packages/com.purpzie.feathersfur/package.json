@@ -1,0 +1,22 @@
+{
+  "name": "com.purpzie.feathersfur",
+  "displayName": "Feathers And Fur (Fork)",
+  "version": "0.0.1",
+  "description": "Fork of NormalizedCrow's Feathers/Fur shader: https://normalizedcrow.gumroad.com/l/FeathersAndFur",
+  "url": "https://github.com/Purpzie/FeatherFurShader",
+  "license": "MIT",
+  "dependencies": {},
+  "gitDependencies": {},
+  "vpmDependencies": {},
+  "documentationUrl": "https://github.com/Purpzie/FeatherFurShader",
+  "author": {
+    "name": "Purpzie",
+    "email": "purpzie@purpzie.com",
+    "url": "https://purpzie.com"
+  },
+  "legacyFolders": {
+    "Assets\\Feathers And Fur": "10a35576ae599204f8cdd3edac0e8696",
+    "Assets\\Feathers And Fur Resources": "2ed76b0441e48974ea129270565d3dce"
+  },
+  "legacyFiles": {}
+}

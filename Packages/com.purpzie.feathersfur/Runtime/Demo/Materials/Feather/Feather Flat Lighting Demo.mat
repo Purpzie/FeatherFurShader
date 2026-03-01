@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Feather Flat Lighting Demo
+  m_Shader: {fileID: 4800000, guid: 1620b56b981474242bf89f6e05892a8c, type: 3}
+  m_Parent: {fileID: 2100000, guid: d31244a37ebe4dd4692bdfa5ad6e84ce, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _BINDPOSEUVCHANNEL_NONE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CoatDirectionTexture:
+        m_Texture: {fileID: 2800000, guid: 6b8b198ed0a24d343a62494092523da7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatOptimizationTexture:
+        m_Texture: {fileID: 2800000, guid: 7c5046bcee52979499759319930faf71, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatParametersTexture:
+        m_Texture: {fileID: 2800000, guid: ed5fba925421ca54fb85206b1dd2ba64, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatAnisotropyTexture:
+        m_Texture: {fileID: 2800000, guid: 6b8b198ed0a24d343a62494092523da7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CoatRoughnessMax: 0.5
+    - _SelfShadowColoredStrength: 0.025
+    - _SelfShadowUncoloredStrength: 0.025
+    - _UndercoatRoughnessMax: 0.5
+    m_Colors:
+    - _CoatAlbedoTint: {r: 0.1882353, g: 0.37717402, b: 0.7529412, a: 1}
+    - _UndercoatAlbedoTint: {r: 0.1882353, g: 0.37717402, b: 0.7529412, a: 1}
+  m_BuildTextureStacks: []

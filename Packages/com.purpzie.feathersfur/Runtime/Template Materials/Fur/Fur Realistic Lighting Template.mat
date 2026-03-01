@@ -1,0 +1,382 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fur Realistic Lighting Template
+  m_Shader: {fileID: 4800000, guid: 1620b56b981474242bf89f6e05892a8c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _BINDPOSEUVCHANNEL_NONE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardAlbedoTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardAnisotropyTexture:
+        m_Texture: {fileID: 2800000, guid: 90d90593cc8f9604c97ea690e53074cf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardCutoutTexture:
+        m_Texture: {fileID: 2800000, guid: b98e0bae1bf05b94b950c03bc837a690, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardEmissionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardMaterialParametersTexture:
+        m_Texture: {fileID: 2800000, guid: d2f5267a730cc884084b3c9874088bac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CardNormalTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ClothingMaskFullTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ClothingMaskPackedTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatAdditionalMaterialParametersTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatAlbedoTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatDirectionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatEmissionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatFurRootNormalTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatMaterialParametersTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatOptimizationTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoatParametersTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FurCustomReflectionProbe:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FurCustomTransmissionProbe:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FurIridescenceLUT:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularCustomReflectionProbe:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularIridescenceLUT:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatAdditionalMaterialParametersTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatAlbedoTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatAnisotropyTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatEmissionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatFurRootNormalTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatMaterialParametersTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UndercoatNormalTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints:
+    - _RandomSeed: 0
+    m_Floats:
+    - FUR_CARD_BIND_DATA_SLOT: 0
+    - _AmbientLightingOverrideMode: 0
+    - _BindDataUvChannel: 0
+    - _BindPoseUvChannel: 0
+    - _BrightnessClamp: -1
+    - _BumpScale: 1
+    - _CardAlbedoBlendMode: 0
+    - _CardAlbedoTextureAtlasEnabled: 1
+    - _CardAmbientOcclusionBlendMode: 4
+    - _CardAmbientOcclusionMax: 1
+    - _CardAmbientOcclusionMin: 0
+    - _CardAnisotropyFlattenFurTangents: 1
+    - _CardAnisotropyStrength: 0
+    - _CardAnisotropyTextureAtlasEnabled: 1
+    - _CardAtlasTextureCount: 4
+    - _CardAtlasTexturesPerRow: 4
+    - _CardBillboardingElevationEnd: 1
+    - _CardBillboardingElevationStart: 0
+    - _CardBillboardingMax: 0
+    - _CardBillboardingMin: 0
+    - _CardBillboardingSizeEnd: 1
+    - _CardBillboardingSizeStart: 0
+    - _CardCutoutTextureAtlasEnabled: 1
+    - _CardCutoutThreshold: 0.5
+    - _CardElevationMax: 1
+    - _CardElevationMin: 0
+    - _CardElevationRandomness: 0
+    - _CardEmissionBlendMode: 0
+    - _CardEmissionTextureAtlasEnabled: 1
+    - _CardFadeLength: 5
+    - _CardFadeStart: 25
+    - _CardIridescentThicknessBlendMode: 0
+    - _CardIridescentThicknessMax: 1
+    - _CardIridescentThicknessMin: 0
+    - _CardLodFactor: 2.5
+    - _CardLodFixedResolution: 1080
+    - _CardLodFixedResolutionEnabled: 0
+    - _CardLodGrowth: 1
+    - _CardLodShadowSpacingMin: 0.01
+    - _CardLodSpacingMax: 0.05
+    - _CardLodSpacingMin: 0
+    - _CardMaterialParametersTextureAtlasEnabled: 1
+    - _CardNormalFurInfluence: 1
+    - _CardNormalStrength: 1
+    - _CardNormalTextureAtlasEnabled: 1
+    - _CardOrientationRandomness: 0
+    - _CardReflectivenessBlendMode: 0
+    - _CardReflectivenessMax: 1
+    - _CardReflectivenessMin: 0
+    - _CardRenderInMirrors: 1
+    - _CardRenderInShadows: 1
+    - _CardRotationRandomnessElevationEnd: 1
+    - _CardRotationRandomnessElevationStart: 0
+    - _CardRotationRandomnessMax: 0
+    - _CardRotationRandomnessMin: 0
+    - _CardRoughnessBlendMode: 4
+    - _CardRoughnessMax: 1
+    - _CardRoughnessMin: 0
+    - _CardShadowBias: 0.05
+    - _CardShapeLengthCurve: 0
+    - _CardShapeLengthMax: 5
+    - _CardShapeLengthMin: 5
+    - _CardShapeWidthCurve: 0
+    - _CardShapeWidthMax: 2
+    - _CardShapeWidthMin: 2
+    - _CardSizeMax: 0.025
+    - _CardSizeMin: 0.005
+    - _ClothingMaskCutoutThreshold: 0.5
+    - _ClothingMaskFullAlphaChannelMode: 0
+    - _ClothingMaskFullBlueChannelMode: 0
+    - _ClothingMaskFullGreenChannelMode: 0
+    - _ClothingMaskFullRedChannelMode: 0
+    - _ClothingMaskPacked0BitMode: 0
+    - _ClothingMaskPacked10BitMode: 0
+    - _ClothingMaskPacked11BitMode: 0
+    - _ClothingMaskPacked12BitMode: 0
+    - _ClothingMaskPacked13BitMode: 0
+    - _ClothingMaskPacked14BitMode: 0
+    - _ClothingMaskPacked15BitMode: 0
+    - _ClothingMaskPacked16BitMode: 0
+    - _ClothingMaskPacked17BitMode: 0
+    - _ClothingMaskPacked18BitMode: 0
+    - _ClothingMaskPacked19BitMode: 0
+    - _ClothingMaskPacked1BitMode: 0
+    - _ClothingMaskPacked20BitMode: 0
+    - _ClothingMaskPacked21BitMode: 0
+    - _ClothingMaskPacked22BitMode: 0
+    - _ClothingMaskPacked23BitMode: 0
+    - _ClothingMaskPacked24BitMode: 0
+    - _ClothingMaskPacked25BitMode: 0
+    - _ClothingMaskPacked26BitMode: 0
+    - _ClothingMaskPacked27BitMode: 0
+    - _ClothingMaskPacked28BitMode: 0
+    - _ClothingMaskPacked29BitMode: 0
+    - _ClothingMaskPacked2BitMode: 0
+    - _ClothingMaskPacked30BitMode: 0
+    - _ClothingMaskPacked31BitMode: 0
+    - _ClothingMaskPacked3BitMode: 0
+    - _ClothingMaskPacked4BitMode: 0
+    - _ClothingMaskPacked5BitMode: 0
+    - _ClothingMaskPacked6BitMode: 0
+    - _ClothingMaskPacked7BitMode: 0
+    - _ClothingMaskPacked8BitMode: 0
+    - _ClothingMaskPacked9BitMode: 0
+    - _ClothingMaskPackedUvWrapEnabled: 1
+    - _CoatAmbientOcclusionMax: 1
+    - _CoatAmbientOcclusionMin: 0
+    - _CoatAmbientTransmissionMaskMax: 1
+    - _CoatAmbientTransmissionMaskMin: 0
+    - _CoatAmbientTransmissionOcclusionMax: 1
+    - _CoatAmbientTransmissionOcclusionMin: 0
+    - _CoatCutoutEnabled: 0
+    - _CoatCutoutThreshold: 0.5
+    - _CoatDiameterMax: 1
+    - _CoatDiameterMin: 0
+    - _CoatFurRootNormalDiffuseInfluence: 0
+    - _CoatFurRootNormalStrength: 1
+    - _CoatFurnessMax: 1
+    - _CoatFurnessMin: 0
+    - _CoatIridescentThicknessMax: 1
+    - _CoatIridescentThicknessMin: 0
+    - _CoatReflectivenessMax: 0
+    - _CoatReflectivenessMin: 0
+    - _CoatRoughnessMax: 1
+    - _CoatRoughnessMin: 0
+    - _CoatSelfShadowMaskMax: 1
+    - _CoatSelfShadowMaskMin: 0
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DiffuseAmbientLightingDirectionality: 1
+    - _DiffuseRemapEnd: 1
+    - _DiffuseRemapStart: 0
+    - _DiffuseRoughnessInfluence: 1
+    - _DstBlend: 0
+    - _FurAmbientLightingDirectionality: 1
+    - _FurBaselineReflectiveness: 0.047
+    - _FurCustomReflectionProbeEnabled: 0
+    - _FurCustomTransmissionProbeEnabled: 0
+    - _FurDirectLightingOcclusion: 0
+    - _FurFresnelStrength: 1
+    - _FurRemapEnd: 1
+    - _FurRemapStart: 0
+    - _FurShift: 0.05
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SelfShadowCardTipOpacity: 0.5
+    - _SelfShadowColoredStrength: 0.01
+    - _SelfShadowNonFurStrengthMultiplier: 1
+    - _SelfShadowUncoloredStrength: 0.01
+    - _ShadowUndercoatCullMode: 2
+    - _SkinnedMeshScaleFixupEnabled: 1
+    - _SmoothnessTextureChannel: 0
+    - _SpecularBaselineReflectiveness: 0.03
+    - _SpecularCustomReflectionProbeEnabled: 0
+    - _SpecularFresnelStrength: 1
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _UndercoatAmbientOcclusionMax: 1
+    - _UndercoatAmbientOcclusionMin: 0
+    - _UndercoatAmbientTransmissionMaskMax: 1
+    - _UndercoatAmbientTransmissionMaskMin: 0
+    - _UndercoatAmbientTransmissionOcclusionMax: 1
+    - _UndercoatAmbientTransmissionOcclusionMin: 0
+    - _UndercoatAnisotropyFlattenFurTangents: 0
+    - _UndercoatAnisotropyStrength: 0
+    - _UndercoatCullMode: 2
+    - _UndercoatCutoutEnabled: 0
+    - _UndercoatCutoutThreshold: 0.5
+    - _UndercoatDiameterMax: 1
+    - _UndercoatDiameterMin: 0
+    - _UndercoatFurRootNormalDiffuseInfluence: 0
+    - _UndercoatFurRootNormalStrength: 1
+    - _UndercoatFurnessMax: 1
+    - _UndercoatFurnessMin: 0
+    - _UndercoatFurnessReadCoatParametersMask: 1
+    - _UndercoatIridescentThicknessMax: 1
+    - _UndercoatIridescentThicknessMin: 0
+    - _UndercoatNormalFurInfluence: 1
+    - _UndercoatNormalStrength: 1
+    - _UndercoatReflectivenessMax: 0
+    - _UndercoatReflectivenessMin: 0
+    - _UndercoatRoughnessMax: 1
+    - _UndercoatRoughnessMin: 0
+    - _UndercoatSelfShadowMaskMax: 1
+    - _UndercoatSelfShadowMaskMin: 0
+    - _UndercoatShadowCullMode: 2
+    - _ZWrite: 1
+    m_Colors:
+    - _AmbientLightingOverrideColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    - _CardAlbedoTint: {r: 1, g: 1, b: 1, a: 1}
+    - _CardEmissionTint: {r: 1, g: 1, b: 1, a: 1}
+    - _CardRescale: {r: 1, g: 1, b: 1, a: 1}
+    - _CoatAlbedoTint: {r: 1, g: 1, b: 1, a: 1}
+    - _CoatEmissionTint: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _UndercoatAlbedoTint: {r: 1, g: 1, b: 1, a: 1}
+    - _UndercoatEmissionTint: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

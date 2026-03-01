@@ -1,5 +1,4 @@
 /*/
 !com.vrchat.core.*
-
-# Change this to match your new package name
-!com.vrchat.demo-template 
+!com.purpzie.feathersfur
+com.purpzie.feathersfur/Editor/Tools/Premium
