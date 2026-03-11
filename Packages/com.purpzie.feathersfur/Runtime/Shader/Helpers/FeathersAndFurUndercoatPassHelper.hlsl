@@ -70,7 +70,11 @@ float4 BasePixelShader(BasePixelInput input, bool isFrontFace : SV_IsFrontFace) 
 
     //get emission
 
+    #ifdef BASE_LIGHTING_PASS
     float3 emission = _UndercoatEmissionTexture.Sample(sampler_UndercoatEmissionTexture, TRANSFORM_TEX(input.uv, _UndercoatEmissionTexture)).rgb * _UndercoatEmissionTint;
+    #else
+    float3 emission = 0;
+    #endif
 
     //get material parameters
 
@@ -85,7 +89,7 @@ float4 BasePixelShader(BasePixelInput input, bool isFrontFace : SV_IsFrontFace) 
 
     float4 additionalMaterialParameters = _UndercoatAdditionalMaterialParametersTexture.Sample(sampler_UndercoatAdditionalMaterialParametersTexture, TRANSFORM_TEX(input.uv, _UndercoatAdditionalMaterialParametersTexture));
     float4 coatParameters = _CoatParametersTexture.SampleLevel(sampler_CoatParametersTexture, TRANSFORM_TEX(input.uv, _CoatParametersTexture), 0.0);
-    
+
     float furness = saturate(lerp(_UndercoatFurnessMin, _UndercoatFurnessMax, _UndercoatFurnessReadCoatParametersMask ? coatParameters.a : additionalMaterialParameters.r));
     float selfShadowStrength = saturate(lerp(_UndercoatSelfShadowMaskMin, _UndercoatSelfShadowMaskMax, additionalMaterialParameters.b));
     float ambientTransmissionOcclusion = saturate(lerp(_UndercoatAmbientTransmissionOcclusionMin, _UndercoatAmbientTransmissionOcclusionMax, additionalMaterialParameters.a));

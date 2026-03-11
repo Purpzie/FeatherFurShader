@@ -46,7 +46,7 @@ float RemapLambert(float originalUnclampedLambert, float remapStart, float remap
 {
     float range = max(0.0, remapEnd - remapStart);
     float remappedLambert = (originalUnclampedLambert - remapStart) / range;
-    
+
     return abs(range) > cEpsilon ? remappedLambert : (originalUnclampedLambert >= remapStart ? 1.0 : -1.0);
 }
 
@@ -86,7 +86,7 @@ LightingSurface GetLightingSurface(float3 vertexNormal,
     //get anisotropy values
 
     float3 tangentSpaceAnisotropyDirection = UnpackNormalmapRGorAG(anisotropyMap);
-    
+
     surface.anisotropyStrength = length(tangentSpaceAnisotropyDirection.xy) * abs(anisotropyStrength);
 
     float3 anisotropyDirection = (vertexTangent * tangentSpaceAnisotropyDirection.x)
@@ -112,9 +112,9 @@ LightingSurface GetLightingSurface(float3 vertexNormal,
     tangentSpaceAnisotropyDirection = length(tangentSpaceAnisotropyDirection) > cEpsilon
                                     ? normalize(tangentSpaceAnisotropyDirection)
                                     : float3(0.0, 1.0, 0.0);
-    
+
     float anisotropyHorizontalLength = length(tangentSpaceAnisotropyDirection.xy);
-    
+
     float2 horizontalAnisotropyDirection = tangentSpaceAnisotropyDirection.xy / anisotropyHorizontalLength; //normalized
     float3 hairPerpendicularDirection = float3(-horizontalAnisotropyDirection * tangentSpaceAnisotropyDirection.z, anisotropyHorizontalLength);
     float hairDirectionNormalOffset = -dot(horizontalAnisotropyDirection, normalForHairAdjustment.xy) / normalForHairAdjustment.z;
@@ -417,7 +417,7 @@ float AnisotropicGGXGeometryTerm(float3 lightDirection, float3 viewDirection, fl
     float tDotV = dot(tangent, viewDirection);
     float bDotV = dot(bitangent, viewDirection);
     float viewTerm = nDotL * length(float3(anisotropicRoughness.x * tDotV, anisotropicRoughness.y * bDotV, nDotV));
-    
+
     float shadowing =  saturate(0.5 / (lightTerm + viewTerm));
 
     //multiscattering approximation from "Misunderstanding Multiscattering" (https://c0de517e.blogspot.com/2019/08/misunderstanding-multiscattering.html)
@@ -477,7 +477,7 @@ float3 GetNonHairDirectLighting(float3 lightDirection,
                                 float metalness,
                                 float iridescentThickness)
 {
-    
+
     float3 halfNormal = normalize(lightDirection + viewDirection);
     float2 anisotropicRoughness = float2(roughness, roughness * (1.0 - anisotropy));
     float diffuseRoughness = sqrt(saturate(anisotropicRoughness.x * anisotropicRoughness.y));
@@ -682,12 +682,12 @@ float3 GetHairDirectLighting(float3 lightDirection,
     //apply self shadowing
     float lambert = dot(lightDirection, selfShadowNormal);
     lighting *= GetSelfShadowing(lambert, selfShadowOpacity, selfShadowParams);
-    
+
     //multiscatter term
     float remappedLambert = RemapLambert(lambert, _FurRemapStart, _FurRemapEnd);
     lighting += GetHairMultiscattering(albedo, reflectiveness, iridescence)
               * GetSelfShadowing(remappedLambert, selfShadowOpacity, selfShadowParams);
-    
+
     return max(0.0, lighting);
 }
 
@@ -826,7 +826,7 @@ float3 GetUnimportantLightsForHair(float3 worldPos, float3 selfShadowOpacity, fl
 
         //get the light intensity
         float3 lighting = unity_LightColor[lightIndex].rgb * lightAttenuation;
-        
+
         //get the self shadowing
         float remappedLambert = RemapLambert(dot(lightDirection, selfShadowNormal), _FurRemapStart, _FurRemapEnd);
         lighting *= GetSelfShadowing(remappedLambert, selfShadowOpacity, selfShadowParams);
@@ -876,7 +876,11 @@ float3 GetFullLightingModel(float3 worldPos,
     float3 selfShadowOpacity = GetSelfShadowOpacity(hairAbsorption, hairReflectiveness, furness);
 
     //initialize lighting to emission value
+    #ifdef BASE_LIGHTING_PASS
     float3 lighting = emission;
+    #else
+    float3 lighting = 0;
+    #endif
 
     //if furness is > 0, evaluate hair lighting
     [branch]
@@ -950,7 +954,7 @@ float3 GetFullLightingModel(float3 worldPos,
         float2 nonHairSelfShadowParams = float2(selfShadowParams.x * _SelfShadowNonFurStrengthMultiplier, 0.0);
         float3 directLightHairShadow = GetSelfShadowing(1.0, selfShadowOpacity, nonHairSelfShadowParams);
 
-        standardLighting *= directLightHairShadow; 
+        standardLighting *= directLightHairShadow;
 
 #ifdef BASE_LIGHTING_PASS
 
@@ -976,7 +980,7 @@ float3 GetFullLightingModel(float3 worldPos,
                                                                      iridescentThickness);
         standardIndirectLighting *= ambientOcclusion;
         standardIndirectLighting *= GetSelfShadowing(1.0, selfShadowOpacity, nonHairSelfShadowParams, 1.0);
-        
+
         standardLighting += standardIndirectLighting;
 
 #endif //BASE_LIGHTING_PASS
@@ -985,6 +989,6 @@ float3 GetFullLightingModel(float3 worldPos,
     }
 
     lighting = ClampBrightness(lighting);
-    
+
     return ApplyBuiltInFog(lighting, worldPos);
 }

@@ -66,7 +66,7 @@ float3 BlendCardColor(float3 baseColor, float4 detailColor, uint blendMode)
 float BlendCardMaterialParameter(float baseValue, float detailValue, uint blendMode, float2 alphas)
 {
     float compositedValue = baseValue;
-    
+
     switch (blendMode)
     {
         case 0: //off
@@ -164,7 +164,7 @@ void CoatGeometryShader(point CardGenerationGeometryInput input[1], inout Triang
 
             output.relativePositionToOccludingUnitSphere = cardInfo.selfShadowLengthAxis * y;
             output.relativePositionToOccludingUnitSphere += cardInfo.selfShadowWidthAxis * (x - 0.5);
-            
+
             output.relativePositionToOccludingUnitSphere /= modelDiameter / 2.0;
             output.relativePositionToOccludingUnitSphere += cardInfo.baseSelfShadowNormal;
 
@@ -216,19 +216,23 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
     //sample emission textures
 
     float3 baseEmission = 0.0;
+    #ifdef BASE_LIGHTING_PASS
     [branch]
     if (_CardEmissionBlendMode != 1)
     {
         baseEmission = _CoatEmissionTexture.SampleLevel(sampler_CoatEmissionTexture, TRANSFORM_TEX(input.baseUv, _CoatEmissionTexture), 0.0).rgb;
     }
+    #endif
 
     float4 detailEmission = 0.0;
+    #ifdef BASE_LIGHTING_PASS
     [branch]
     if (_CardEmissionBlendMode != 0)
     {
         float2 cardEmissionUv = _CardEmissionTextureAtlasEnabled ? cardAtlasUv : input.uv;
         detailEmission = _CardEmissionTexture.Sample(sampler_CardEmissionTexture, TRANSFORM_TEX(cardEmissionUv, _CardEmissionTexture));
     }
+    #endif
 
     //sample material paramter textures
 
