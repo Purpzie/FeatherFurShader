@@ -3,6 +3,7 @@
 #include "FeathersAndFurCommonHelper.hlsl"
 #include "Lighting.cginc"
 #include "AutoLight.cginc"
+#include "FeathersAndFurForkHelper.hlsl"
 
 //Structs ------------------------------------------------------------------------------------------
 
@@ -146,8 +147,9 @@ float3 ApplyBuiltInFog(float3 color, float3 worldPos)
 //get the direction from a point to the current Unity light
 float3 GetBuiltInLightDirection(float3 worldPos)
 {
+    return CacheLightDirection;
     //when _WorldSpaceLightPos0.w == 0 then _WorldSpaceLightPos0.xyz is a directional light direction
-    return (_WorldSpaceLightPos0.w < 0.5) ? normalize(_WorldSpaceLightPos0.xyz) : normalize(_WorldSpaceLightPos0.xyz - worldPos.xyz);
+    //return (_WorldSpaceLightPos0.w < 0.5) ? normalize(_WorldSpaceLightPos0.xyz) : normalize(_WorldSpaceLightPos0.xyz - worldPos.xyz);
 }
 
 float3 GetBuiltInLightColor()
@@ -475,7 +477,8 @@ float3 GetNonHairDirectLighting(float3 lightDirection,
                                 float3 anisotropicTangent,
                                 float3 anisotropicBitangent,
                                 float metalness,
-                                float iridescentThickness)
+                                float iridescentThickness,
+                                float3 lightColor)
 {
 
     float3 halfNormal = normalize(lightDirection + viewDirection);
@@ -490,7 +493,7 @@ float3 GetNonHairDirectLighting(float3 lightDirection,
     float3 specularLighting = AnisotropicGGX(lightDirection, viewDirection, halfNormal, specularNormal, anisotropicTangent, anisotropicBitangent, anisotropicRoughness, albedo, metalness);
     specularLighting *= SpecularIridescence(dot(lightDirection, halfNormal), iridescentThickness);
 
-    return diffuseLighting + specularLighting;
+    return diffuseLighting * lightColor + specularLighting * CacheSpecLightColor;
 }
 
 //full GGX/diffuse indirect  lighting model
@@ -634,7 +637,8 @@ float3 GetHairDirectLighting(float3 lightDirection,
                              float iridescentThickness,
                              float3 selfShadowNormal,
                              float3 selfShadowOpacity,
-                             float2 selfShadowParams)
+                             float2 selfShadowParams,
+                             float3 lightColor)
 {
     //derive frequently used terms in the hair lighting BRDF
 
@@ -683,10 +687,13 @@ float3 GetHairDirectLighting(float3 lightDirection,
     float lambert = dot(lightDirection, selfShadowNormal);
     lighting *= GetSelfShadowing(lambert, selfShadowOpacity, selfShadowParams);
 
+    lighting *= CacheSpecLightColor;
+
     //multiscatter term
     float remappedLambert = RemapLambert(lambert, _FurRemapStart, _FurRemapEnd);
     lighting += GetHairMultiscattering(albedo, reflectiveness, iridescence)
-              * GetSelfShadowing(remappedLambert, selfShadowOpacity, selfShadowParams);
+              * GetSelfShadowing(remappedLambert, selfShadowOpacity, selfShadowParams)
+              * lightColor;
 
     return max(0.0, lighting);
 }
@@ -858,6 +865,8 @@ float3 GetFullLightingModel(float3 worldPos,
                             float transmissionOcclusion,
                             float diffuseNormalBias)
 {
+    ForkInit(worldPos);
+
     //get light parameters
     float3 lightDirection = GetBuiltInLightDirection(worldPos);
     float3 lightColor = GetBuiltInLightColor() * GetBuiltInLightAttenuation(worldPos) * GetBuiltInLightRealtimeShadows(worldPos);
@@ -886,6 +895,8 @@ float3 GetFullLightingModel(float3 worldPos,
     [branch]
     if (furness > cEpsilon)
     {
+        ForkInitNormal(selfShadowNormal, viewDirection, lightColor, roughness);
+
         float3 hairLighting = GetHairDirectLighting(lightDirection,
                                                     viewDirection,
                                                     hairTangent,
@@ -896,8 +907,9 @@ float3 GetFullLightingModel(float3 worldPos,
                                                     iridescentThickness,
                                                     selfShadowNormal,
                                                     selfShadowOpacity,
-                                                    selfShadowParams);
-        hairLighting *= lightColor;
+                                                    selfShadowParams,
+                                                    lightColor);
+        //hairLighting *= lightColor;
         hairLighting *= lerp(1.0, ambientOcclusion, _FurDirectLightingOcclusion);
 
 #ifdef BASE_LIGHTING_PASS
@@ -937,6 +949,8 @@ float3 GetFullLightingModel(float3 worldPos,
     [branch]
     if (furness < (1.0 - cEpsilon))
     {
+        ForkInitNormal(normal, viewDirection, lightColor, roughness);
+
         float3 standardLighting = GetNonHairDirectLighting(lightDirection,
                                                            viewDirection,
                                                            diffuseNormal,
@@ -947,8 +961,9 @@ float3 GetFullLightingModel(float3 worldPos,
                                                            anisotropyTangent,
                                                            anisotropyBitangent,
                                                            reflectiveness,
-                                                           iridescentThickness);
-        standardLighting *= lightColor;
+                                                           iridescentThickness,
+                                                           lightColor);
+        //standardLighting *= lightColor;
 
         //apply hair self shadowing to non-hair lighting as well
         float2 nonHairSelfShadowParams = float2(selfShadowParams.x * _SelfShadowNonFurStrengthMultiplier, 0.0);

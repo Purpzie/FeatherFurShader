@@ -223,9 +223,6 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
     {
         baseEmission = _CoatEmissionTexture.SampleLevel(sampler_CoatEmissionTexture, TRANSFORM_TEX(input.baseUv, _CoatEmissionTexture), 0.0).rgb;
     }
-    #ifdef _PURPZIE_GRYPHON_AUDIOLINK_ON
-    baseEmission += PurpzieGryphonAudiolinkEmission(input.baseUv, baseAlbedo);
-    #endif
     #endif
 
     float4 detailEmission = 0.0;
@@ -291,6 +288,9 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
     baseEmission *= _CoatEmissionTint;
     detailEmission *= _CardEmissionTint;
     float3 emission = max(0.0, BlendCardColor(baseEmission, detailEmission, _CardEmissionBlendMode));
+    #if defined(BASE_LIGHTING_PASS) && defined(_PURPZIE_GRYPHON_AUDIOLINK_ON)
+    emission += PurpzieGryphonAudiolinkEmission(input.baseUv, albedo);
+    #endif
 
     //remap and blend material parameters
 

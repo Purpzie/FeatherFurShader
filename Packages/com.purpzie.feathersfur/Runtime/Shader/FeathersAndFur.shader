@@ -4,7 +4,7 @@
     {
         [Toggle] _LIGHT_VOLUMES ("Light Volumes", Int) = 0
         [Toggle] _PURPZIE_GRYPHON_AUDIOLINK ("Gryphon Audiolink", Int) = 0
-        _PurpzieGryphonAudiolinkTexture ("Gryphon Audiolink Texture", 2D) = "black" {}
+        [NoScaleOffset] _PurpzieGryphonAudiolinkTexture ("Gryphon Audiolink Texture", 2D) = "black" {}
         _PurpzieGryphonAudiolinkStrength ("Gryphon Audiolink Strength", Range(0, 1)) = 0.5
 
         //Fur Cards -----------------------------------------------------------------------
@@ -343,6 +343,7 @@
             #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
 
             #define BASE_LIGHTING_PASS
+            #define UNDERCOAT_PASS
 
             #pragma vertex BaseVertexShader
             #pragma fragment BasePixelShader
@@ -372,6 +373,7 @@
             #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
 
             #define BASE_LIGHTING_PASS
+            #define COAT_PASS
             #pragma shader_feature_local __ _BINDPOSEUVCHANNEL_UV2 _BINDPOSEUVCHANNEL_UV3 _BINDPOSEUVCHANNEL_UV4 _BINDPOSEUVCHANNEL_UV5 _BINDPOSEUVCHANNEL_UV6 _BINDPOSEUVCHANNEL_UV7 _BINDPOSEUVCHANNEL_UV8
 
             #pragma vertex CardGenerationVertexShader
