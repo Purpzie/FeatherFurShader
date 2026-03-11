@@ -19,7 +19,7 @@ float3 PurpzieGryphonAudiolinkEmission(float2 uv, float3 albedo) {
 		emission += map.r * AudioLinkData(ALPASS_AUDIOLINK + uint2(0, 2)).r * AudioLinkData(ALPASS_THEME_COLOR0);
 		emission += map.g * AudioLinkData(ALPASS_AUDIOLINK + uint2(0, 0)).r * AudioLinkData(ALPASS_THEME_COLOR1);
 		emission += map.b * AudioLinkData(ALPASS_AUDIOLINK + uint2(0, 3)).r * AudioLinkData(ALPASS_THEME_COLOR2);
-		return emission * 6 * albedo * _PurpzieGryphonAudiolinkStrength;
+		return emission * 3 * albedo * _PurpzieGryphonAudiolinkStrength;
 	}
 	return 0;
 }
