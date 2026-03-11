@@ -2,6 +2,7 @@
 
 #include "FeathersAndFurCommonHelper.hlsl"
 #include "FeathersAndFurLightingHelper.hlsl"
+#include "FeathersAndFurForkHelper.hlsl"
 
 //Structs ------------------------------------------------------------------------------------------
 
@@ -72,6 +73,9 @@ float4 BasePixelShader(BasePixelInput input, bool isFrontFace : SV_IsFrontFace) 
 
     #ifdef BASE_LIGHTING_PASS
     float3 emission = _UndercoatEmissionTexture.Sample(sampler_UndercoatEmissionTexture, TRANSFORM_TEX(input.uv, _UndercoatEmissionTexture)).rgb * _UndercoatEmissionTint;
+    #ifdef _PURPZIE_GRYPHON_AUDIOLINK_ON
+    emission += PurpzieGryphonAudiolinkEmission(input.uv, colorAndAlpha);
+    #endif
     #else
     float3 emission = 0;
     #endif

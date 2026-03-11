@@ -3,6 +3,7 @@
 #include "FeathersAndFurCommonHelper.hlsl"
 #include "FeathersAndFurCardGenerationHelper.hlsl"
 #include "FeathersAndFurLightingHelper.hlsl"
+#include "FeathersAndFurForkHelper.hlsl"
 
 //Structs ------------------------------------------------------------------------------------------
 
@@ -222,6 +223,9 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
     {
         baseEmission = _CoatEmissionTexture.SampleLevel(sampler_CoatEmissionTexture, TRANSFORM_TEX(input.baseUv, _CoatEmissionTexture), 0.0).rgb;
     }
+    #ifdef _PURPZIE_GRYPHON_AUDIOLINK_ON
+    baseEmission += PurpzieGryphonAudiolinkEmission(input.baseUv, baseAlbedo);
+    #endif
     #endif
 
     float4 detailEmission = 0.0;

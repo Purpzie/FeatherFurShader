@@ -5,6 +5,7 @@
         [Toggle] _LIGHT_VOLUMES ("Light Volumes", Int) = 0
         [Toggle] _PURPZIE_GRYPHON_AUDIOLINK ("Gryphon Audiolink", Int) = 0
         _PurpzieGryphonAudiolinkTexture ("Gryphon Audiolink Texture", 2D) = "black" {}
+        _PurpzieGryphonAudiolinkStrength ("Gryphon Audiolink Strength", Range(0, 1)) = 0.5
 
         //Fur Cards -----------------------------------------------------------------------
 
