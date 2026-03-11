@@ -33,6 +33,8 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
 
     private struct Foldouts
     {
+        public bool forkOptions;
+
         public bool cards;
         public bool cardsCoat;
         public bool cardsTextures;
@@ -99,6 +101,8 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
 
         public Foldouts(bool dummy)
         {
+            forkOptions = true;
+
             cards = true;
             cardsCoat = true;
             cardsTextures = true;
@@ -422,11 +426,21 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
         public MaterialProperty undercoatShadowCullMode;
         public MaterialProperty cardShadowBias;
         public MaterialProperty randomSeed;
-            
+
         public MaterialProperty fallbackTexture;
+
+        // Fork options
+        public MaterialProperty lightVolumes;
+        public MaterialProperty purpzieGryphonAudiolink;
+        public MaterialProperty purpzieGryphonAudiolinkTexture;
 
         public FeathersAndFurMaterialProperties(MaterialProperty[] props)
         {
+            // Fork options
+            lightVolumes = FindProperty("_LIGHT_VOLUMES", props);
+            purpzieGryphonAudiolink = FindProperty("_PURPZIE_GRYPHON_AUDIOLINK", props);
+            purpzieGryphonAudiolinkTexture = FindProperty("_PurpzieGryphonAudiolinkTexture", props);
+
             //Fur Cards
 
             coatParametersTexture = FindProperty("_CoatParametersTexture", props);
@@ -769,6 +783,19 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
                 }
             }
         }
+
+        if (FeathersAndFurToolUtilities.StartFoldout(ref sFoldouts.forkOptions, "Fork Options"))
+        {
+            materialEditor.ShaderProperty(properties.lightVolumes, "Light Volumes");
+            materialEditor.ShaderProperty(properties.purpzieGryphonAudiolink, "Gryphon Audiolink");
+            if (properties.purpzieGryphonAudiolink.floatValue > 0)
+            {
+                materialEditor.ShaderProperty(properties.purpzieGryphonAudiolinkTexture, "Gryphon Audiolink Texture");
+            }
+            FeathersAndFurToolUtilities.EndFoldout();
+        }
+
+        EditorGUILayout.Space();
 
         //Fur Card Properties ----------------------------------------------------------------------
 
@@ -1991,7 +2018,7 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
             rect.x -= rect.width / 2.0f;
 
             //for some inexplicable reason, using a label causes us to switch to editing a different property
-            //when this if statement changes while dragging a slider 
+            //when this if statement changes while dragging a slider
             //so just add a button that does nothing and looks like a label
             GUI.Button(rect, "Coat and Undercoat Properties Do Not Match", EditorStyles.label);
         }

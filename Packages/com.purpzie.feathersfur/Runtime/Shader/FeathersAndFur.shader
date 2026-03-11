@@ -2,6 +2,10 @@
 {
     Properties
     {
+        [Toggle] _LIGHT_VOLUMES ("Light Volumes", Int) = 0
+        [Toggle] _PURPZIE_GRYPHON_AUDIOLINK ("Gryphon Audiolink", Int) = 0
+        _PurpzieGryphonAudiolinkTexture ("Gryphon Audiolink Texture", 2D) = "black" {}
+
         //Fur Cards -----------------------------------------------------------------------
 
         //Coat
@@ -15,7 +19,7 @@
         _CardCutoutTexture("Card Cutout Opacity Texture", 2D) = "white" {}
         [ToggleUI] _CardCutoutTextureAtlasEnabled("Card Cutout Opacity Use Texture Atlas", Int) = 1
         _CardCutoutThreshold("Card Cutout Threshold", Range(0.0, 1.0)) = 0.5
-        
+
         //Size
         [PowerSlider(2.72)] _CardSizeMin("Min Card Size", Range(0.001, 0.1)) = 0.005
         [PowerSlider(2.72)] _CardSizeMax("Max Card Size", Range(0.001, 0.1)) = 0.025
@@ -57,7 +61,7 @@
         _UndercoatAlbedoTint("Undercoat Color Tint", Color) = (1.0, 1.0, 1.0, 1.0)
         [ToggleUI] _UndercoatCutoutEnabled("Undercoat Use Cutout", Int) = 0
         _UndercoatCutoutThreshold("Undercoat Cutout Threshold", Range(0.0, 1.0)) = 0.5
-        
+
         //Coat
         _CoatAlbedoTexture("Coat Color And Cutout Opacity Texture", 2D) = "white" {}
         _CoatAlbedoTint("Coat Color Tint", Color) = (1.0, 1.0, 1.0, 1.0)
@@ -272,7 +276,7 @@
 
         //Miscellaneous
         _BrightnessClamp("Brightness Clamp", Float) = -1.0
-        
+
         //Optimization ----------------------------------------------------------------------------
 
         //Coat
@@ -333,7 +337,9 @@
             #pragma target 5.0
             #pragma multi_compile_fwdbase novertexlight nolightmap nodynlightmap nodirlightmap
             #pragma multi_compile_instancing
-            #pragma multi_compile_fog 
+            #pragma multi_compile_fog
+            #pragma shader_feature_local_fragment __ _LIGHT_VOLUMES_ON
+            #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
 
             #define BASE_LIGHTING_PASS
 
@@ -360,7 +366,9 @@
             #pragma target 5.0
             #pragma multi_compile_fwdbase novertexlight nolightmap nodynlightmap nodirlightmap
             #pragma multi_compile_instancing
-            #pragma multi_compile_fog 
+            #pragma multi_compile_fog
+            #pragma shader_feature_local_fragment __ _LIGHT_VOLUMES_ON
+            #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
 
             #define BASE_LIGHTING_PASS
             #pragma shader_feature_local __ _BINDPOSEUVCHANNEL_UV2 _BINDPOSEUVCHANNEL_UV3 _BINDPOSEUVCHANNEL_UV4 _BINDPOSEUVCHANNEL_UV5 _BINDPOSEUVCHANNEL_UV6 _BINDPOSEUVCHANNEL_UV7 _BINDPOSEUVCHANNEL_UV8
@@ -392,7 +400,7 @@
             #pragma target 5.0
             #pragma multi_compile_fwdadd_fullshadows
             #pragma multi_compile_instancing
-            #pragma multi_compile_fog 
+            #pragma multi_compile_fog
 
             #pragma vertex BaseVertexShader
             #pragma fragment BasePixelShader
