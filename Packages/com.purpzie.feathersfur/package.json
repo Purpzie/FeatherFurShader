@@ -1,7 +1,7 @@
 {
   "name": "com.purpzie.feathersfur",
   "displayName": "Feathers And Fur (Fork)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fork of NormalizedCrow's Feathers/Fur shader: https://normalizedcrow.gumroad.com/l/FeathersAndFur",
   "url": "https://github.com/Purpzie/FeatherFurShader",
   "license": "MIT",
