@@ -13,7 +13,8 @@ See the original shader's documentation [here](https://www.youtube.com/watch?v=k
 ### What's different
 - Ported to VCC package
 - Additional card textures
+- Hue shift
 - Light volumes support
 - Specular antialiasing and specular highlights from light probes
 - Optimizations
-- Optional audiolink mode for the Fluffy Gryphon base
+- Optional audiolink mode for the [Fluffy Gryphon](https://jinxxy.com/Purpzie/gryphon) glowsticks

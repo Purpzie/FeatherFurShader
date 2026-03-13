@@ -1,5 +1,5 @@
 > [!WARNING]
-> This is an active work in progress. Please don't use it yet.
+> This is an active work in progress. Things may break.
 
 # Feather/Fur shader for VRChat
 A fork of [NormalizedCrow's Feather/Fur shader](https://normalizedcrow.gumroad.com/l/FeathersAndFur) with a few small tweaks and extra features.
@@ -13,7 +13,8 @@ See the original shader's documentation [here](https://www.youtube.com/watch?v=k
 ### What's different
 - Ported to VCC package
 - Additional card textures
+- Hue shift
 - Light volumes support
 - Specular antialiasing and specular highlights from light probes
 - Optimizations
-- Optional audiolink mode for the Fluffy Gryphon base
+- Optional audiolink mode for the [Fluffy Gryphon](https://jinxxy.com/Purpzie/gryphon) glowsticks
