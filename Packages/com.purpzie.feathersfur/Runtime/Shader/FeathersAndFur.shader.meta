@@ -2,7 +2,38 @@ fileFormatVersion: 2
 guid: 1620b56b981474242bf89f6e05892a8c
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _PurpzieGryphonAudiolinkTexture: {fileID: 2800000, guid: 2d4a7cfdaf478e44dbc2fc14721eb538,
+      type: 3}
+  - _CoatParametersTexture: {instanceID: 0}
+  - _CoatDirectionTexture: {instanceID: 0}
+  - _CardCutoutTexture: {instanceID: 0}
+  - _UndercoatAlbedoTexture: {instanceID: 0}
+  - _CoatAlbedoTexture: {instanceID: 0}
+  - _CardAlbedoTexture: {instanceID: 0}
+  - _UndercoatEmissionTexture: {instanceID: 0}
+  - _CoatEmissionTexture: {instanceID: 0}
+  - _CardEmissionTexture: {instanceID: 0}
+  - _UndercoatMaterialParametersTexture: {instanceID: 0}
+  - _CoatMaterialParametersTexture: {instanceID: 0}
+  - _CardMaterialParametersTexture: {instanceID: 0}
+  - _UndercoatAdditionalMaterialParametersTexture: {instanceID: 0}
+  - _CoatAdditionalMaterialParametersTexture: {instanceID: 0}
+  - _UndercoatNormalTexture: {instanceID: 0}
+  - _UndercoatAnisotropyTexture: {instanceID: 0}
+  - _UndercoatFurRootNormalTexture: {instanceID: 0}
+  - _CoatFurRootNormalTexture: {instanceID: 0}
+  - _CardNormalTexture: {instanceID: 0}
+  - _CardAnisotropyTexture: {instanceID: 0}
+  - _ClothingMaskFullTexture: {instanceID: 0}
+  - _ClothingMaskPackedTexture: {instanceID: 0}
+  - _FurIridescenceLUT: {instanceID: 0}
+  - _SpecularIridescenceLUT: {instanceID: 0}
+  - _FurCustomReflectionProbe: {instanceID: 0}
+  - _FurCustomTransmissionProbe: {instanceID: 0}
+  - _SpecularCustomReflectionProbe: {instanceID: 0}
+  - _CoatOptimizationTexture: {instanceID: 0}
+  - _MainTex: {instanceID: 0}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

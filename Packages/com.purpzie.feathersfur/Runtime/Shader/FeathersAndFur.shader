@@ -4,6 +4,10 @@
     {
         [Toggle] _LIGHT_VOLUMES ("Light Volumes", Int) = 0
         [Toggle] _PURPZIE_GRYPHON_AUDIOLINK ("Gryphon Audiolink", Int) = 0
+        [Toggle] _COLOR_ADJUST ("Color Adjust", Int) = 0
+        _ColorAdjustHue ("Hue", Range(0, 1)) = 0
+        _ColorAdjustSaturation ("Saturation", Range(-1, 5)) = 0
+        _ColorAdjustValue ("Value", Range(-1, 2)) = 0
         [NoScaleOffset] _PurpzieGryphonAudiolinkTexture ("Gryphon Audiolink Texture", 2D) = "black" {}
         _PurpzieGryphonAudiolinkStrength ("Gryphon Audiolink Strength", Range(0, 1)) = 0.5
 
@@ -341,6 +345,7 @@
             #pragma multi_compile_fog
             #pragma shader_feature_local_fragment __ _LIGHT_VOLUMES_ON
             #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
+            #pragma shader_feature_local_fragment __ _COLOR_ADJUST_ON
 
             #define BASE_LIGHTING_PASS
             #define UNDERCOAT_PASS
@@ -371,6 +376,7 @@
             #pragma multi_compile_fog
             #pragma shader_feature_local_fragment __ _LIGHT_VOLUMES_ON
             #pragma shader_feature_local_fragment __ _PURPZIE_GRYPHON_AUDIOLINK_ON
+            #pragma shader_feature_local_fragment __ _COLOR_ADJUST_ON
 
             #define BASE_LIGHTING_PASS
             #define COAT_PASS
@@ -405,6 +411,8 @@
             #pragma multi_compile_instancing
             #pragma multi_compile_fog
 
+            #pragma shader_feature_local_fragment __ _COLOR_ADJUST_ON
+
             #pragma vertex BaseVertexShader
             #pragma fragment BasePixelShader
 
@@ -432,6 +440,7 @@
             #pragma multi_compile_fog
 
             #pragma shader_feature_local __ _BINDPOSEUVCHANNEL_UV2 _BINDPOSEUVCHANNEL_UV3 _BINDPOSEUVCHANNEL_UV4 _BINDPOSEUVCHANNEL_UV5 _BINDPOSEUVCHANNEL_UV6 _BINDPOSEUVCHANNEL_UV7 _BINDPOSEUVCHANNEL_UV8
+            #pragma shader_feature_local_fragment __ _COLOR_ADJUST_ON
 
             #pragma vertex CardGenerationVertexShader
             #pragma hull CardGenerationHullShader

@@ -67,12 +67,19 @@ float4 BasePixelShader(BasePixelInput input, bool isFrontFace : SV_IsFrontFace) 
 
     //get albedo
 
-    float3 albedo = colorAndAlpha.rgb * _UndercoatAlbedoTint;
+    float3 albedo = colorAndAlpha.rgb;
+    #ifdef _COLOR_ADJUST_ON
+    albedo = ForkColorAdjust(albedo);
+    #endif
+    albedo *= _UndercoatAlbedoTint;
 
     //get emission
 
     #ifdef BASE_LIGHTING_PASS
     float3 emission = _UndercoatEmissionTexture.Sample(sampler_UndercoatEmissionTexture, TRANSFORM_TEX(input.uv, _UndercoatEmissionTexture)).rgb * _UndercoatEmissionTint;
+    #ifdef _COLOR_ADJUST_ON
+    emission = ForkColorAdjust(emission);
+    #endif
     #ifdef _PURPZIE_GRYPHON_AUDIOLINK_ON
     emission += PurpzieGryphonAudiolinkEmission(input.uv, albedo);
     #endif

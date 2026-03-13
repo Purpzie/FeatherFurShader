@@ -431,6 +431,10 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
 
         // Fork options
         public MaterialProperty lightVolumes;
+        public MaterialProperty colorAdjust;
+        public MaterialProperty colorAdjustHue;
+        public MaterialProperty colorAdjustSaturation;
+        public MaterialProperty colorAdjustValue;
         public MaterialProperty purpzieGryphonAudiolink;
         public MaterialProperty purpzieGryphonAudiolinkTexture;
 
@@ -438,6 +442,10 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
         {
             // Fork options
             lightVolumes = FindProperty("_LIGHT_VOLUMES", props);
+            colorAdjust = FindProperty("_COLOR_ADJUST", props);
+            colorAdjustHue = FindProperty("_ColorAdjustHue", props);
+            colorAdjustSaturation = FindProperty("_ColorAdjustSaturation", props);
+            colorAdjustValue = FindProperty("_ColorAdjustValue", props);
             purpzieGryphonAudiolink = FindProperty("_PURPZIE_GRYPHON_AUDIOLINK", props);
             purpzieGryphonAudiolinkTexture = FindProperty("_PurpzieGryphonAudiolinkTexture", props);
 
@@ -787,10 +795,21 @@ internal class FeathersAndFurShaderGUI : ShaderGUI
         if (FeathersAndFurToolUtilities.StartFoldout(ref sFoldouts.forkOptions, "Fork Options"))
         {
             materialEditor.ShaderProperty(properties.lightVolumes, "Light Volumes");
+            materialEditor.ShaderProperty(properties.colorAdjust, "Color Adjust");
+            if (properties.colorAdjust.floatValue > 0)
+            {
+                EditorGUI.indentLevel += 1;
+                materialEditor.ShaderProperty(properties.colorAdjustHue, "Hue");
+                materialEditor.ShaderProperty(properties.colorAdjustSaturation, "Saturation");
+                materialEditor.ShaderProperty(properties.colorAdjustValue, "Value");
+                EditorGUI.indentLevel -= 1;
+            }
             materialEditor.ShaderProperty(properties.purpzieGryphonAudiolink, "Gryphon Audiolink");
             if (properties.purpzieGryphonAudiolink.floatValue > 0)
             {
-                materialEditor.ShaderProperty(properties.purpzieGryphonAudiolinkTexture, "Gryphon Audiolink Texture");
+                EditorGUI.indentLevel += 1;
+                materialEditor.ShaderProperty(properties.purpzieGryphonAudiolinkTexture, "Glowsticks Bake");
+                EditorGUI.indentLevel -= 1;
             }
             FeathersAndFurToolUtilities.EndFoldout();
         }

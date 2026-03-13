@@ -222,6 +222,9 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
     if (_CardEmissionBlendMode != 1)
     {
         baseEmission = _CoatEmissionTexture.SampleLevel(sampler_CoatEmissionTexture, TRANSFORM_TEX(input.baseUv, _CoatEmissionTexture), 0.0).rgb;
+        #ifdef _COLOR_ADJUST_ON
+        baseEmission = ForkColorAdjust(baseEmission);
+        #endif
     }
     #endif
 
@@ -279,6 +282,9 @@ float4 CoatPixelShader(CoatPixelInput input, bool isFrontFace : SV_IsFrontFace) 
 
     //tint and blend albedo
 
+    #ifdef _COLOR_ADJUST_ON
+    baseAlbedo = ForkColorAdjust(baseAlbedo);
+    #endif
     baseAlbedo *= _CoatAlbedoTint.rgb;
     detailAlbedo *= _CardAlbedoTint;
     float3 albedo = saturate(BlendCardColor(baseAlbedo, detailAlbedo, _CardAlbedoBlendMode));

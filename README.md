@@ -1,5 +1,5 @@
 > [!WARNING]
-> This is an active work in progress. Please don't use it yet.
+> This is an active work in progress. Things may break.
 
 # Feather/Fur shader for VRChat
 A fork of [NormalizedCrow's Feather/Fur shader](https://normalizedcrow.gumroad.com/l/FeathersAndFur) with a few small tweaks and extra features.
